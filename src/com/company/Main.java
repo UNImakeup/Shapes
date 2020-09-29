@@ -7,13 +7,13 @@ public class Main {
     public static void main(String[] args) {
 	// write your code here
         triangle tri = new triangle();
-        square sq = new square();
+        square sq = new square(4, 4, 4);
         tri.findCenter(2);
         System.out.println(tri.findCenter(2));
-        sq.setSides(4);
+        //sq.setSides(4);
         System.out.println(sq.getOmkreds());
         System.out.println(sq.getAreal());
-        System.out.println(sq.getPointsOfSquare(4));
+        System.out.println(sq.returnPoint());
 
 
     }
@@ -23,24 +23,55 @@ abstract class shapes{
     int areal;
     int omkreds;
 
+    public abstract void shape();
 
     abstract int findCenter(int a);
+    abstract boolean isInShape(Point p);
 
 
         }
 
         class triangle extends shapes{
     int sLength;
+
+            @Override
+            public void shape() {
+
+            }
+
             @Override
             int findCenter(int a) {
                 return 0;
             }
+
+            @Override
+            boolean isInShape(Point p) {
+                return false;
+            }
         }
         class square extends shapes{
-    int sLength;
+            int sLength;
+            Point point1;
+            Point point2;
+            Point point3;
+            Point point4;
 
             // Kunne måske være smart med noget a la; return (point + b);
 
+
+            @Override
+            public void shape() {
+            }
+            public square(int sLength, int xStart, int yStart){
+                this.sLength = sLength;
+                this.point1 = new Point(xStart, yStart);
+                this.point2 = new Point((xStart + sLength), yStart);
+                this.point3 = new Point(xStart,(yStart + sLength));
+                this.point4 = new Point((xStart + sLength),(yStart + sLength));
+        }
+        Point returnPoint(){
+                return point1;
+        }
 
             @Override
             int findCenter(int a) {
@@ -49,36 +80,12 @@ abstract class shapes{
 
                 return 0;
             }
-            void setSides(int b){
-                this.sLength = b;
+
+            @Override
+            boolean isInShape(Point p) {
+                //if(p.x> ){ }
+                return false;
             }
-
-            void setStartPoint(int x, int y){
-                Point a = new Point(x, y);
-            }
-
-            Point getPointsOfSquare(int b){
-                Point a = new Point(3, 4);
-                Point point1 = a;
-                Point point2 = new Point((a.x + sLength), a.y);
-                Point point3 = new Point(a.x, a.y + sLength);
-                Point point4 = new Point(a.x + sLength, a.y + sLength);
-                if(b == 1){
-                    return point1;
-                }
-                if(b == 2){
-                    return point2;
-                }
-                if(b == 3){
-                    return point3;
-                }
-                if(b==4){
-                    return point4;
-                }else {
-                    return point1;
-                }
-
-                }
 
             int getOmkreds(){
                 omkreds = sLength * 4;
@@ -91,8 +98,20 @@ abstract class shapes{
         }
         class circle extends shapes{
     int radius;
+
+            @Override
+            public void shape() {
+
+            }
+
             @Override
             int findCenter(int a) {
                 return a;
             }
+
+            @Override
+            boolean isInShape(Point p) {
+                return false;
+            }
+
         }
