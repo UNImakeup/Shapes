@@ -10,7 +10,6 @@ public class Main {
         square sq = new square(4, 4, 4);
         tri.findCenter(2);
         System.out.println(tri.findCenter(2));
-        //sq.setSides(4);
         System.out.println(sq.getOmkreds());
         System.out.println(sq.getAreal());
         System.out.println(sq.returnPoint());
