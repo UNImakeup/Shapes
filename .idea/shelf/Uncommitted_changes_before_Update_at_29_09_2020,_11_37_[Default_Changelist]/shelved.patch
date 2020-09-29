@@ -1,0 +1,32 @@
+Index: src/com/company/Main.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.company;\n\nimport java.awt.*;\n\npublic class Main {\n\n    public static void main(String[] args) {\n\t// write your code here\n        triangle tri = new triangle();\n        square sq = new square();\n        tri.findCenter(2);\n        System.out.println(tri.findCenter(2));\n        sq.setSides(4);\n        System.out.println(sq.getOmkreds());\n        System.out.println(sq.getAreal());\n        System.out.println(sq.getPointsOfSquare(4));\n\n\n    }\n}\n\nabstract class shapes{\n    int areal;\n    int omkreds;\n\n\n    abstract int findCenter(int a);\n\n\n        }\n\n        class triangle extends shapes{\n    int sLength;\n            @Override\n            int findCenter(int a) {\n                return 0;\n            }\n        }\n        class square extends shapes{\n    int sLength;\n\n            // Kunne måske være smart med noget a la; return (point + b);\n\n\n            @Override\n            int findCenter(int a) {\n                int startPoint = a;\n                int center = startPoint + sLength;\n\n                return 0;\n            }\n            void setSides(int b){\n                this.sLength = b;\n            }\n\n            void setStartPoint(int x, int y){\n                Point a = new Point(x, y);\n            }\n\n            Point getPointsOfSquare(int b){\n                Point a = new Point(3, 4);\n                Point point1 = a;\n                Point point2 = new Point((a.x + sLength), a.y);\n                Point point3 = new Point(a.x, a.y + sLength);\n                Point point4 = new Point(a.x + sLength, a.y + sLength);\n                if(b == 1){\n                    return point1;\n                }\n                if(b == 2){\n                    return point2;\n                }\n                if(b == 3){\n                    return point3;\n                }\n                if(b==4){\n                    return point4;\n                }else {\n                    return point1;\n                }\n\n                }\n\n            int getOmkreds(){\n                omkreds = sLength * 4;\n                return omkreds;\n            }\n            int getAreal(){\n                areal = sLength * 2;\n                return areal;\n            }\n        }\n        class circle extends shapes{\n    int radius;\n            @Override\n            int findCenter(int a) {\n                return a;\n            }\n        }
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- src/com/company/Main.java	(revision 95145d37f7f17e467c27266a035488c9169f691f)
++++ src/com/company/Main.java	(date 1601372177044)
+@@ -15,7 +15,6 @@
+         System.out.println(sq.getAreal());
+         System.out.println(sq.getPointsOfSquare(4));
+ 
+-
+     }
+ }
+ 
+Index: .idea/vcs.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- .idea/vcs.xml	(date 1601371901406)
++++ .idea/vcs.xml	(date 1601371901406)
+@@ -0,0 +1,6 @@
++<?xml version="1.0" encoding="UTF-8"?>
++<project version="4">
++  <component name="VcsDirectoryMappings">
++    <mapping directory="" vcs="Git" />
++  </component>
++</project>
+\ No newline at end of file

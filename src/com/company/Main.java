@@ -15,7 +15,9 @@ public class Main {
         System.out.println(sq.getAreal());
         System.out.println(sq.returnPoint());
 
-
+        circle circ = new circle(3,3,3);
+        System.out.println("The circles circunference point is " + circ.getcircu());
+        System.out.println("The circles areal is " + circ.getAreal());
     }
 }
 
@@ -57,8 +59,6 @@ abstract class shapes{
             Point point4;
 
             // Kunne måske være smart med noget a la; return (point + b);
-
-
             @Override
             public void shape() {
             }
@@ -97,16 +97,32 @@ abstract class shapes{
             }
         }
         class circle extends shapes{
-    int radius;
+            double radius;
+            Point centerPoint;
+            Point reachPoint;
 
             @Override
             public void shape() {
-
+            }
+            public circle(int radius, int xPoint, int yPoint){
+                this.radius = radius;
+                this.centerPoint = new Point(xPoint,yPoint);
+                this.reachPoint = new Point(xPoint,yPoint);
             }
 
-            @Override
-            int findCenter(int a) {
-                return a;
+            int findCenter( int cp) {
+                int cPoint = cp;
+                return cPoint;
+            }
+
+            double getcircu(){
+                this.areal = (int) (2 * Math.PI * this.radius);
+                return areal;
+            }
+
+            double getAreal(){
+                this.areal = (int) (Math.PI * Math.sqrt(this.radius));
+                return areal;
             }
 
             @Override
