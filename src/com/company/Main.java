@@ -8,11 +8,11 @@ public class Main {
 	// write your code here
         triangle tri = new triangle();
         square sq = new square(4, 4, 4);
-        tri.findCenter(2);
-        System.out.println(tri.findCenter(2));
         System.out.println(sq.getOmkreds());
         System.out.println(sq.getAreal());
         System.out.println(sq.returnPoint());
+        System.out.println(sq.findCenter());
+        System.out.println(sq.isInShape(4, 5));
 
 
     }
@@ -24,14 +24,15 @@ abstract class shapes{
 
     public abstract void shape();
 
-    abstract int findCenter(int a);
-    abstract boolean isInShape(Point p);
+    abstract Point findCenter();
+    abstract boolean isInShape(int x, int y);
 
 
         }
 
         class triangle extends shapes{
     int sLength;
+    Point a;
 
             @Override
             public void shape() {
@@ -39,12 +40,12 @@ abstract class shapes{
             }
 
             @Override
-            int findCenter(int a) {
-                return 0;
+            Point findCenter() {
+            return this.a = new Point(2, 3) ;
             }
 
             @Override
-            boolean isInShape(Point p) {
+            boolean isInShape(int x, int y) {
                 return false;
             }
         }
@@ -54,6 +55,7 @@ abstract class shapes{
             Point point2;
             Point point3;
             Point point4;
+            Point center;
 
             // Kunne måske være smart med noget a la; return (point + b);
 
@@ -73,43 +75,46 @@ abstract class shapes{
         }
 
             @Override
-            int findCenter(int a) {
-                int startPoint = a;
-                int center = startPoint + sLength;
-
-                return 0;
+            Point findCenter() {
+                this.center = new Point(this.point1.x + (sLength/2), this.point1.y + (sLength/2) );
+                return this.center;
             }
 
             @Override
-            boolean isInShape(Point p) {
+            boolean isInShape(int x, int y) {
                 //if(p.x> ){ }
-                return false;
+                if(x <= this.point1.x && x >= this.point2.x
+                        && y <= this.point1.y && y >= this.point3.y){
+                    return true;
+                }else {
+                    return false;
+                }
             }
 
             int getOmkreds(){
-                omkreds = sLength * 4;
-                return omkreds;
+                this.omkreds = sLength * 4;
+                return this.omkreds;
             }
             int getAreal(){
-                areal = sLength * 2;
-                return areal;
+                this.areal = sLength * 2;
+                return this.areal;
             }
         }
         class circle extends shapes{
     int radius;
-
+    Point b;
             @Override
             public void shape() {
 
             }
 
             @Override
-            int findCenter(int a) {
-                return a;
+            Point findCenter() {
+                return this.b = new Point(2, 3);
             }
 
             @Override
-            boolean isInShape(Point p) {
+            boolean isInShape(int x, int y) {
                 return false;
             }
 
