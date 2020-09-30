@@ -1,7 +1,6 @@
 package com.company;
 
 import java.awt.*;
-import java.sql.SQLOutput;
 
 public class Main {
 
@@ -25,6 +24,7 @@ public class Main {
         System.out.println(tri.getDistance(circ.center.x, circ.center.y));
         System.out.println(circ.isInShape(circ.center.x, circ.center.y));
         System.out.println(circ.isInShape(10000, 10000));
+        System.out.println(tri.isInShape(1, 1));
 
 
     }
@@ -48,13 +48,11 @@ abstract class shapes{
 
         class triangle extends shapes{
     int sLength;
-    Point a;
     Point point1;
             Point point2;
             Point point3;
             int GL;
             int Height;
-            Point center;
             @Override
             public void shape() {}
                 public triangle(int x1, int y1, int x2, int y2, int x3, int y3){
@@ -63,6 +61,8 @@ abstract class shapes{
                     this.point3 = new Point(x3, y3);
                     this.GL = x2 - x1;
                     this.Height = y3 - y1;
+                    this.center = new Point((this.point1.x+this.point2.x+this.point3.x)/3, (this.point1.y+this.point2.y+this.point3.y)/3);
+
                 }
 
                 double getAreal(){
@@ -75,29 +75,38 @@ abstract class shapes{
                 double distance12 = Math.sqrt((this.point1.x - this.point2.x) * (this.point1.x - this.point2.x) + (this.point1.y - this.point2.y) * (this.point1.y - this.point2.y));
                 double distance23 = Math.sqrt((this.point2.x - this.point3.x) * (this.point2.x - this.point3.x) + (this.point2.y - this.point3.y) * (this.point2.y - this.point3.y));
                 double distance31 = Math.sqrt((this.point3.x - this.point1.x) * (this.point3.x - this.point1.x) + (this.point3.y - this.point1.y) * (this.point3.y - this.point1.y));
-                omkreds = distance12 + distance23 + distance31;
-                return omkreds;
-
-
+                this.omkreds = distance12 + distance23 + distance31;
+                return this.omkreds;
             }
 
 
 
             @Override
             Point findCenter() {
-                center=new Point((this.point1.x+this.point2.x+this.point3.x)/3, (this.point1.y+this.point2.y+this.point3.y)/3);
                 return center;
             }
 
             @Override
             boolean isInShape(int x, int y) {
                 //if(triangle.this.getDistance(x,y))
-                return false;
+                int ay = x - point1.x;
+                int ax = y - point1.y;
+
+                boolean a = (point2.x - point1.x)* ay - (point2.y - point1.y) * ax > 0;
+
+                if ((point3.x - point1.x) * ay - (point3.y - point1.y) * ax > 0 == a){
+                    return false;
+                }
+                if ((point3.x - point2.x) * (y - point2.y) - (point3.y - point2.y) * (x - point2.x) > 0 != a){
+                    return false;
+                }
+
+                return true;
             }
 
             @Override
             double getDistance(int x, int y) {
-                double distance = Math.sqrt((x - this.center.x) * (x - this.center.x) + (y - this.center.y) * (y - this.center.y));
+                distance = Math.sqrt((x - this.center.x) * (x - this.center.x) + (y - this.center.y) * (y - this.center.y));
 
                 return distance;
             }
@@ -108,7 +117,6 @@ abstract class shapes{
             Point point2;
             Point point3;
             Point point4;
-            Point center;
             private int x;
             private int y;
 
@@ -124,13 +132,14 @@ abstract class shapes{
                 this.point2 = new Point((xStart + sLength), yStart);
                 this.point3 = new Point(xStart,(yStart + sLength));
                 this.point4 = new Point((xStart + sLength),(yStart + sLength));
+                this.center = new Point(this.point1.x + (sLength/2), this.point1.y + (sLength/2) );
         }
 
             @Override
             Point findCenter() {
-                this.center = new Point(this.point1.x + (sLength/2), this.point1.y + (sLength/2) );
                 return this.center;
             }
+
 
             @Override
             boolean isInShape(int x, int y) {
@@ -146,7 +155,7 @@ abstract class shapes{
 
             @Override
             double getDistance(int x, int y){
-                double distance = Math.sqrt((x - this.center.x) * (x - this.center.x) + (y - this.center.y) * (y - this.center.y));
+                distance = Math.sqrt((x - this.center.x) * (x - this.center.x) + (y - this.center.y) * (y - this.center.y));
 
                 return distance;
             }
@@ -166,9 +175,7 @@ abstract class shapes{
         }
         class circle extends shapes{
     double radius;
-    Point center;
     Point reachPoint;
-    Point b;
             @Override
             public void shape() {
             }
@@ -206,7 +213,7 @@ abstract class shapes{
 
             @Override
             double getDistance(int x, int y) {
-                double distance = Math.sqrt((x - this.center.x) * (x - this.center.x) + (y - this.center.y) * (y - this.center.y));
+                distance = Math.sqrt((x - this.center.x) * (x - this.center.x) + (y - this.center.y) * (y - this.center.y));
 
                 return distance;
             }
