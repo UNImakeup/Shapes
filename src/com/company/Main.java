@@ -13,7 +13,6 @@ public class Main {
         System.out.println(sq.getAreal());
         System.out.println(sq.findCenter());
         System.out.println(sq.isInShape(4, 4));
-        System.out.println(sq.get());
         System.out.println(sq.getDistance(7,7));
         System.out.println(tri.getAreal());
         System.out.println(tri.getOmkreds());
@@ -47,7 +46,6 @@ abstract class shapes{
         }
 
         class triangle extends shapes{
-    int sLength;
     Point point1;
             Point point2;
             Point point3;
@@ -117,8 +115,6 @@ abstract class shapes{
             Point point2;
             Point point3;
             Point point4;
-            private int x;
-            private int y;
 
             // Kunne måske være smart med noget a la; return (point + b);
 
@@ -160,9 +156,6 @@ abstract class shapes{
                 return distance;
             }
 
-            int get(){
-                return this.point1.x;
-            }
 
             double getOmkreds(){
                 this.omkreds = sLength * 4;
@@ -175,14 +168,12 @@ abstract class shapes{
         }
         class circle extends shapes{
     double radius;
-    Point reachPoint;
             @Override
             public void shape() {
             }
             public circle(int radius, int xPoint, int yPoint){
                 this.radius = radius;
                 this.center = new Point(xPoint,yPoint);
-                this.reachPoint = new Point(xPoint,yPoint);
             }
 
             @Override
