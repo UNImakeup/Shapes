@@ -41,6 +41,8 @@ abstract class shapes{
     abstract boolean isInShape(int x, int y);
 
     abstract double getDistance(int x, int y);
+    abstract double getOmkreds();
+    abstract double getAreal();
 
 
         }
@@ -63,11 +65,13 @@ abstract class shapes{
 
                 }
 
+                @Override
                 double getAreal(){
                 this.areal = this.GL * this.Height /2;
                 return  this.areal;
             }
 
+            @Override
             double getOmkreds(){
                 //Bare sæt getDistance() ind, når den er skrevet ordentlig ind.
                 double distance12 = Math.sqrt((this.point1.x - this.point2.x) * (this.point1.x - this.point2.x) + (this.point1.y - this.point2.y) * (this.point1.y - this.point2.y));
@@ -156,12 +160,14 @@ abstract class shapes{
                 return distance;
             }
 
-
+            @Override
             double getOmkreds(){
                 this.omkreds = sLength * 4;
                 return this.omkreds;
             }
-            int getAreal(){
+
+            @Override
+            double getAreal(){
                 this.areal = sLength * sLength;
                 return this.areal;
             }
@@ -181,11 +187,13 @@ abstract class shapes{
                 return this.center;
             }
 
+            @Override
             double getOmkreds(){
                 this.omkreds = (int) (2 * Math.PI * this.radius);
                 return this.omkreds;
             }
 
+            @Override
             double getAreal(){
                 this.areal = (int) (Math.PI * Math.sqrt(this.radius));
                 return this.areal;
