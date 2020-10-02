@@ -9,7 +9,7 @@ public class Main {
 	// write your code here
         triangle tri = new triangle(1, 2, 3, 4, 5, 6);
         square sq = new square(4, 4, 4);
-        circle circ = new circle(4, 10, 4);
+        circle cir = new circle(4, 10, 4);
         System.out.println(sq.getOmkreds());
         System.out.println(sq.getAreal());
         System.out.println(sq.findCenter());
@@ -22,10 +22,9 @@ public class Main {
         System.out.println(sq.getDistance(tri.center.x, tri.center.y));
 
         System.out.println(tri.getDistance(sq.center.x, sq.center.y));
-        System.out.println(tri.getDistance(circ.center.x, circ.center.y));
-        System.out.println(circ.isInShape(circ.center.x, circ.center.y));
-        System.out.println(circ.isInShape(10000, 10000));
-
+        System.out.println(tri.getDistance(cir.center.x, cir.center.y));
+        System.out.println(cir.isInShape(cir.center.x, cir.center.y));
+        System.out.println(cir.isInShape(10000, 10000));
 
     }
 }
@@ -40,9 +39,7 @@ abstract class shapes{
 
     abstract Point findCenter();
     abstract boolean isInShape(int x, int y);
-
     abstract double getDistance(int x, int y);
-
 
         }
 
