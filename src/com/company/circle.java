@@ -26,13 +26,13 @@ public class circle extends shapes {
     }
 
     @Override
-    double getAreal() {
+    public double getAreal() {
         this.areal = (int) (Math.PI * Math.sqrt(this.radius));
         return this.areal;
     }
 
     @Override
-    boolean isInShape(int x, int y) {
+    public boolean isInShape(int x, int y) {
         //if(getdistance(xy, this.centerpoint)<radius)
         //return true, else return false
         if (circle.this.getDistance(x, y) < this.radius) {
@@ -43,7 +43,7 @@ public class circle extends shapes {
     }
 
     @Override
-    double getDistance(int x, int y) {
+    public double getDistance(int x, int y) {
         distance = Math.sqrt((x - this.center.x) * (x - this.center.x) + (y - this.center.y) * (y - this.center.y));
 
         return distance;

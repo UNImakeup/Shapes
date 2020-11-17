@@ -21,13 +21,13 @@ class triangle extends shapes{
     }
 
     @Override
-    double getAreal(){
+    public double getAreal(){
         this.areal = this.GL * this.Height /2;
         return  this.areal;
     }
 
     @Override
-    double getOmkreds(){
+    public double getOmkreds(){
         //Bare sæt getDistance() ind, når den er skrevet ordentlig ind.
         double distance12 = Math.sqrt((this.point1.x - this.point2.x) * (this.point1.x - this.point2.x) + (this.point1.y - this.point2.y) * (this.point1.y - this.point2.y));
         double distance23 = Math.sqrt((this.point2.x - this.point3.x) * (this.point2.x - this.point3.x) + (this.point2.y - this.point3.y) * (this.point2.y - this.point3.y));
@@ -39,12 +39,12 @@ class triangle extends shapes{
 
 
     @Override
-    Point findCenter() {
+    public Point findCenter() {
         return center;
     }
 
     @Override
-    boolean isInShape(int x, int y) {
+    public boolean isInShape(int x, int y) {
         //if(triangle.this.getDistance(x,y))
         int ay = x - point1.x;
         int ax = y - point1.y;
@@ -62,7 +62,7 @@ class triangle extends shapes{
     }
 
     @Override
-    double getDistance(int x, int y) {
+    public double getDistance(int x, int y) {
         distance = Math.sqrt((x - this.center.x) * (x - this.center.x) + (y - this.center.y) * (y - this.center.y));
 
         return distance;

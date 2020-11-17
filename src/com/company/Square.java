@@ -26,13 +26,13 @@ class square extends shapes{
     }
 
     @Override
-    Point findCenter() {
+    public Point findCenter() {
         return this.center;
     }
 
 
     @Override
-    boolean isInShape(int x, int y) {
+    public boolean isInShape(int x, int y) {
         //if(p.x> ){ }
         if(x >= this.point1.x && x <= this.point2.x
                 && y >= this.point1.y && y <= this.point3.y
@@ -44,20 +44,20 @@ class square extends shapes{
     }
 
     @Override
-    double getDistance(int x, int y){
+    public double getDistance(int x, int y){
         distance = Math.sqrt((x - this.center.x) * (x - this.center.x) + (y - this.center.y) * (y - this.center.y));
 
         return distance;
     }
 
     @Override
-    double getOmkreds(){
+    public double getOmkreds(){
         this.omkreds = sLength * 4;
         return this.omkreds;
     }
 
     @Override
-    double getAreal(){
+    public double getAreal(){
         this.areal = sLength * sLength;
         return this.areal;
     }
