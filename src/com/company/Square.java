@@ -3,7 +3,7 @@ package com.company;
 
 import java.awt.*;
 
-class square extends shapes{
+class rectangle extends shapes{
     int sLength;
     Point point1;
     Point point2;
@@ -16,13 +16,13 @@ class square extends shapes{
     @Override
     public void shape() {
     }
-    public square(int sLength, int xStart, int yStart){
+    public rectangle(int sLength, int xStart, int yStart){
         this.sLength = sLength;
         this.point1 = new Point(xStart, yStart);
-        this.point2 = new Point((xStart + sLength), yStart);
+        this.point2 = new Point((xStart + (sLength * 2)), yStart);
         this.point3 = new Point(xStart,(yStart + sLength));
-        this.point4 = new Point((xStart + sLength),(yStart + sLength));
-        this.center = new Point(this.point1.x + (sLength/2), this.point1.y + (sLength/2) );
+        this.point4 = new Point((xStart + (sLength * 2)),(yStart + sLength));
+        this.center = new Point(this.point1.x + (sLength), this.point1.y + (sLength/2) );
     }
 
     @Override
@@ -52,13 +52,13 @@ class square extends shapes{
 
     @Override
     public double getOmkreds(){
-        this.omkreds = sLength * 4;
+        this.omkreds = sLength * 2 + (sLength * 2) * 2;
         return this.omkreds;
     }
 
     @Override
     public double getAreal(){
-        this.areal = sLength * sLength;
+        this.areal = (sLength * 2) * sLength;
         return this.areal;
     }
 }

@@ -1,10 +1,5 @@
 package com.company;
 
-import org.junit.Test;
-import com.company.test_sources_root.*;
-
-import java.awt.*;
-
 import static org.junit.Assert.assertEquals;
 
 public class Main {
@@ -12,7 +7,7 @@ public class Main {
     public static void main(String[] args) {
 	// write your code here
         triangle tri = new triangle(1, 2, 3, 4, 5, 6);
-        square sq = new square(4, 4, 4);
+        rectangle sq = new rectangle(4, 4, 4);
         circle circ = new circle(4, 10, 4);
         System.out.println(sq.getOmkreds());
         System.out.println(sq.getAreal());
